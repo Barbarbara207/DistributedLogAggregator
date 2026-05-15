@@ -1,0 +1,15 @@
+#Eseguibili
+server
+client
+
+#Build CMake
+cmake-build-debug/
+build/
+
+#File object e compilati
+*.o
+*.out
+
+#Cache/editor
+.vscode/
+.idea/
