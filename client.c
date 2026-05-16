@@ -1,11 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/socket.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <netinet/in.h>
-#include <netdb.h>
+#include "client.h"
 
 // quando c'è errore chiama questa func
 void error(const char *msg) {
@@ -54,20 +47,7 @@ int main(int argc, char *argv[]) {
             error("ERROR writing to socket");
         }
         bzero(buffer,255);
-        //legge tutto quello che arriva in sockfd
-        n = read(sockfd, buffer, 255);
-        if (n < 0) {
-            error("ERROR reading from socket");
-        }
-        printf("Server: %s\n",buffer);
-        //"string compare" confronta quello che si è scritto con il codice di uscita dal loop che
-        // in questo caso è "Bye"
-        int i = strncmp("Bye", buffer, 3);
-        if (i == 0) {
-            break;
-        }
     }
-
     close(sockfd);
     return 0;
 }
